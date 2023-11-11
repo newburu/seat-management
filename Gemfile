@@ -65,3 +65,8 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# 設定
+gem 'config'
+# 環境変数
+gem 'dotenv-rails'
