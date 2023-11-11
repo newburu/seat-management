@@ -70,3 +70,6 @@ end
 gem 'config'
 # 環境変数
 gem 'dotenv-rails'
+
+# テンプレートエンジン
+gem 'slim-rails'
