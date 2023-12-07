@@ -1,0 +1,22 @@
+= form_with(model: seat) do |form|
+  - if seat.errors.any?
+    div style="color: red"
+      h2 = "#{pluralize(seat.errors.count, "error")} prohibited this seat from being saved:"
+      ul
+        - seat.errors.each do |error|
+          li = error.full_message
+
+  div
+    = form.label :event_id, style: "display: block"
+    = form.text_field :event_id
+
+  div
+    = form.label :no, style: "display: block"
+    = form.number_field :no
+
+  div
+    = form.label :attendee_id, style: "display: block"
+    = form.text_field :attendee_id
+
+  div
+    = form.submit
