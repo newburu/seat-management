@@ -8,7 +8,7 @@
 
   div
     = form.label :event_id, style: "display: block"
-    = form.text_field :event_id
+    = form.collection_select :event_id, Event.all, :id, :name
 
   div
     = form.label :no, style: "display: block"
@@ -16,7 +16,7 @@
 
   div
     = form.label :attendee_id, style: "display: block"
-    = form.text_field :attendee_id
+    = form.collection_select :attendee_id, Attendee.all, :id, :name
 
   div
     = form.submit

@@ -10,4 +10,4 @@ div id="#{dom_id event}"
     =< event.place
   p
     strong User:
-    =< event.user_id
+    =< event.user.try(:name)
