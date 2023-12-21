@@ -38,6 +38,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_074630) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["attendee_id"], name: "index_seats_on_attendee_id"
+    t.index ["event_id", "no"], name: "index_seats_on_event_id_and_no", unique: true
     t.index ["event_id"], name: "index_seats_on_event_id"
   end
 
