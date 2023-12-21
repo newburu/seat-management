@@ -73,3 +73,6 @@ gem 'dotenv-rails'
 
 # テンプレートエンジン
 gem 'slim-rails'
+
+# 初期データ
+gem 'seed-fu'
