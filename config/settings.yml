@@ -1,0 +1,24 @@
+system:
+  title: '配席管理サービス'
+  url: 'http://localhost:3000/'
+  bbs_url: 
+  trello_url: 
+  google_form_url: 
+  official_twitter_id: 'newburu'
+  description: '配席を管理するサービスです！'
+  description_smartphone: '配席管理サービス！'
+  hashtag: '配席管理サービス'
+  keywords: ['配席管理']
+  twitter_site: newburu
+  twitter:
+    url: 'https://twitter.com/'
+    tweet_url: 'http://twitter.com/intent/tweet'
+    share_url: 'http://twitter.com/share'
+  facebook:
+    share_url: 'https://www.facebook.com/share.php'
+  line:
+    share_url: 'https://social-plugins.line.me/lineit/share'
+  mail:
+    share_url: 'mailto:'
+  default:
+    user_name: 名無しさん

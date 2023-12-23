@@ -65,3 +65,14 @@ group :test do
   gem "capybara"
   gem "selenium-webdriver"
 end
+
+# 設定
+gem 'config'
+# 環境変数
+gem 'dotenv-rails'
+
+# テンプレートエンジン
+gem 'slim-rails'
+
+# 初期データ
+gem 'seed-fu'
