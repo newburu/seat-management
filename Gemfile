@@ -76,3 +76,7 @@ gem 'slim-rails'
 
 # 初期データ
 gem 'seed-fu'
+
+gem "bootstrap", "~> 5.3"
+
+gem "sassc-rails", "~> 2.1"
