@@ -3,9 +3,26 @@ p style="color: green" = notice
 h1 Seats
 
 #seats
-  - @seats.each do |seat|
-    == render seat
-    p
-      = link_to "Show this seat", seat
+  table.table.table-striped.table-hover
+    thead.table-primary
+      tr
+        td
+          = Seat.human_attribute_name :event
+        td
+          = Seat.human_attribute_name :no
+        td
+          = Seat.human_attribute_name :attendee
+        td
+    tbody
+      - @seats.each do |seat|
+        tr
+          td
+            = seat.event.try(:name)
+          td
+            = seat.no
+          td
+            = seat.attendee.try(:name)
+          td
+            = link_to "Show", seat
 
 = link_to "New seat", new_seat_path
