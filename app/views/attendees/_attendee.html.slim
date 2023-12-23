@@ -1,0 +1,10 @@
+div id="#{dom_id attendee}"
+  p
+    strong Event:
+    =< attendee.event.try(:name)
+  p
+    strong Name:
+    =< attendee.name
+  p
+    strong User:
+    =< attendee.user.try(:name)
