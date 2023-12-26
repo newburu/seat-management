@@ -23,6 +23,6 @@ h1 Seats
           td
             = seat.attendee.try(:name)
           td
-            = link_to "Show", seat
+            = link_to "Show", seat, class: "btn btn-primary"
 
-= link_to "New seat", new_seat_path
+= link_to "New seat", new_seat_path, class: "btn btn-primary"

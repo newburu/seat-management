@@ -5,6 +5,5 @@ h1 Editing attendee
 br
 
 div
-  => link_to "Show this attendee", @attendee
-  '|
-  =< link_to "Back to attendees", attendees_path
+  => link_to "Show", @attendee, class: "btn btn-primary"
+  =< link_to "Back", attendees_path, class: "btn btn-secondary"

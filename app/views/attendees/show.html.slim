@@ -1,10 +1,9 @@
 p style="color: green" = notice
 
-== render @attendee
+== render "form", attendee: @attendee, disabled: true
 
 div
-  => link_to "Edit this attendee", edit_attendee_path(@attendee)
-  '|
-  =< link_to "Back to attendees", attendees_path
+  => link_to "Edit", edit_attendee_path(@attendee), class: "btn btn-primary"
+  =< link_to "Back", attendees_path, class: "btn btn-secondary"
 
-  = button_to "Destroy this attendee", @attendee, method: :delete
+  = button_to "Destroy", @attendee, method: :delete, class: "btn btn-danger"
