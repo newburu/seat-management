@@ -153,6 +153,8 @@ GEM
       activesupport (>= 6.1)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
+    i18n-debug (1.2.0)
+      i18n (< 2)
     importmap-rails (1.2.3)
       actionpack (>= 6.0.0)
       activesupport (>= 6.0.0)
@@ -229,6 +231,9 @@ GEM
     rails-html-sanitizer (1.6.0)
       loofah (~> 2.21)
       nokogiri (~> 1.14)
+    rails-i18n (7.0.8)
+      i18n (>= 0.7, < 2)
+      railties (>= 6.0.0, < 8)
     railties (7.1.2)
       actionpack (= 7.1.2)
       activesupport (= 7.1.2)
@@ -313,11 +318,13 @@ DEPENDENCIES
   config
   debug
   dotenv-rails
+  i18n-debug
   importmap-rails
   jbuilder
   mysql2 (~> 0.5)
   puma (>= 5.0)
   rails (~> 7.1.2)
+  rails-i18n
   sassc-rails (~> 2.1)
   seed-fu
   selenium-webdriver
