@@ -3,9 +3,26 @@ p style="color: green" = notice
 h1 Events
 
 #events
-  - @events.each do |event|
-    == render event
-    p
-      = link_to "Show this event", event
+  table.table.table-striped.table-hover
+    thead.table-primary
+      tr
+        td
+          = Event.human_attribute_name :name
+        td
+          = Event.human_attribute_name :start_time
+        td
+          = Event.human_attribute_name :place
+        td
+    tbody
+      - @events.each do |event|
+        tr
+          td
+            = event.name
+          td
+            = l event.start_time, format: :default, default: nil
+          td
+            = event.place
+          td
+            = link_to "Show", event, class: "btn btn-primary"
 
-= link_to "New event", new_event_path
+= link_to "New event", new_event_path, class: "btn btn-primary"

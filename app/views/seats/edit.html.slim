@@ -5,6 +5,5 @@ h1 Editing seat
 br
 
 div
-  => link_to "Show this seat", @seat
-  '|
-  =< link_to "Back to seats", seats_path
+  => link_to "Show", @seat, class: "btn btn-primary"
+  =< link_to "Back", seats_path, class: "btn btn-secondary"

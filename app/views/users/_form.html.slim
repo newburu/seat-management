@@ -1,3 +1,5 @@
+- disabled = false if disabled.nil?
+
 = form_with(model: user) do |form|
   - if user.errors.any?
     div style="color: red"
@@ -7,8 +9,9 @@
           li = error.full_message
 
   div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
+    = form.label :name, style: "display: block", class: "form-label"
+    = form.text_field :name, disabled: disabled, class: "form-control"
 
-  div
-    = form.submit
+  - if disabled == false
+    div
+      = form.submit nil, class: "btn btn-primary"

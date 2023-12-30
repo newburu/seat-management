@@ -3,9 +3,18 @@ p style="color: green" = notice
 h1 Users
 
 #users
-  - @users.each do |user|
-    == render user
-    p
-      = link_to "Show this user", user
+  table.table.table-striped.table-hover
+    thead.table-primary
+      tr
+        td
+          = User.human_attribute_name :name
+        td
+    tbody
+      - @users.each do |user|
+        tr
+          td
+            = user.name
+          td
+            = link_to "Show", user, class: "btn btn-primary"
 
-= link_to "New user", new_user_path
+= link_to "New user", new_user_path, class: "btn btn-primary"

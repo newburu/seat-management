@@ -76,3 +76,13 @@ gem 'slim-rails'
 
 # 初期データ
 gem 'seed-fu'
+
+gem "bootstrap", "~> 5.3"
+
+gem "sassc-rails", "~> 2.1"
+
+# i18n
+gem 'rails-i18n'
+group :development do
+  gem 'i18n-debug'
+end

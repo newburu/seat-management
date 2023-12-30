@@ -1,3 +1,5 @@
+- disabled = false if disabled.nil?
+
 = form_with(model: event) do |form|
   - if event.errors.any?
     div style="color: red"
@@ -7,20 +9,21 @@
           li = error.full_message
 
   div
-    = form.label :name, style: "display: block"
-    = form.text_field :name
+    = form.label :name, style: "display: block", class: "form-label"
+    = form.text_field :name, disabled: disabled, class: "form-control"
 
   div
-    = form.label :start_time, style: "display: block"
-    = form.datetime_field :start_time
+    = form.label :start_time, style: "display: block", class: "form-label"
+    = form.datetime_field :start_time, disabled: disabled, class: "form-control"
 
   div
-    = form.label :place, style: "display: block"
-    = form.text_field :place
+    = form.label :place, style: "display: block", class: "form-label"
+    = form.text_field :place, disabled: disabled, class: "form-control"
 
   div
-    = form.label :user_id, style: "display: block"
-    = form.collection_select :user_id, User.all, :id, :name
+    = form.label :user_id, style: "display: block", class: "form-label"
+    = form.collection_select :user_id, User.all, :id, :name, {}, {disabled: disabled, class: "form-control"}
 
-  div
-    = form.submit
+  - if disabled == false
+    div
+      = form.submit nil, class: "btn btn-primary"
