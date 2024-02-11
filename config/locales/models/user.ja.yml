@@ -1,0 +1,8 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        name: ユーザ名
+  users:
+    index:
+      title: ユーザを探す

@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      attendee:
+        event: イベント名
+        name: 出席者名
+        user: ユーザ名
+  attendees:
+    index:
+      title: 出席者を探す
