@@ -1,0 +1,25 @@
+header.header
+  nav.menu.nav.navbar.navbar-expand-lg.navbar-dark.bg-primary
+    = link_to root_path, {class: 'navbar-brand'} do
+      span.mr-2.system-font
+        | SeatManagement
+    button.navbar-toggler.navbar-toggler-right type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation"
+      span.navbar-toggler-icon
+    #navbar.navbar-collapse.collapse
+      ul.navbar-nav.mr-auto
+        li.nav-item.dropdown
+          = link_to events_path, {class: "nav-item nav-link"} do
+            span.mr-2
+              = t('events.index.title')
+        li.nav-item.dropdown
+          = link_to attendees_path, {class: "nav-item nav-link"} do
+            span.mr-2
+              = t('attendees.index.title')
+        li.nav-item.dropdown
+          = link_to seats_path, {class: "nav-item nav-link"} do
+            span.mr-2
+              = t('seats.index.title')
+        li.nav-item.dropdown
+          = link_to users_path, {class: "nav-item nav-link"} do
+            span.mr-2
+              = t('users.index.title')

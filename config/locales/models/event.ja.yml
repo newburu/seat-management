@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    attributes:
+      event:
+        name: イベント名
+        start_time: 実施日時
+        place: 場所
+  events:
+    index:
+      title: イベントを探す
