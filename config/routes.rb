@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   resources :seats
   resources :attendees
-  resources :events
+  resources :events do
+    member do
+      get 'seats'
+    end
+  end
   resources :users
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
