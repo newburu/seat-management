@@ -5,6 +5,10 @@ ja:
         name: イベント名
         start_time: 実施日時
         place: 場所
+        user: 主催者
   events:
     index:
       title: イベントを探す
+  btn:
+    new_attendee: 出席者を追加
+    new_seat: 配席を登録

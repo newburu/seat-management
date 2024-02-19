@@ -9,16 +9,17 @@
           li = error.full_message
 
   div
-    = form.label :event_id, style: "display: block", class: "form-label"
-    = form.collection_select :event_id, Event.all, :id, :name, {}, {disabled: disabled, class: "form-control"}
+    = form.label :event, style: "display: block", class: "form-label"
+    = form.text_field :event, disabled: true, class: "form-control", value: @attendee.event.name
+    = form.hidden_field :event_id
+
+  div
+    = form.label :user, style: "display: block", class: "form-label"
+    = form.collection_select :user_id, User.all, :id, :name, {}, {disabled: disabled, class: "form-control"}
 
   div
     = form.label :name, style: "display: block", class: "form-label"
     = form.text_field :name, disabled: disabled, class: "form-control"
-
-  div
-    = form.label :user_id, style: "display: block", class: "form-label"
-    = form.collection_select :user_id, User.all, :id, :name, {}, {disabled: disabled, class: "form-control"}
 
   - if disabled == false
     div

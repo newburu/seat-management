@@ -9,9 +9,9 @@ h1 Attendees
         td
           = Attendee.human_attribute_name :event
         td
-          = Attendee.human_attribute_name :name
-        td
           = Attendee.human_attribute_name :user
+        td
+          = Attendee.human_attribute_name :name
         td
     tbody
       - @attendees.each do |attendee|
@@ -19,9 +19,9 @@ h1 Attendees
           td
             = attendee.event.try(:name)
           td
-            = attendee.name
-          td
             = attendee.user.try(:name)
+          td
+            = attendee.name
           td
             = link_to "Show", attendee, class: "btn btn-primary"
 

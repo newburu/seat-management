@@ -7,3 +7,6 @@ div
   =< link_to "Back", events_path, class: "btn btn-secondary"
 
   = button_to "Destroy", @event, method: :delete, class: "btn btn-danger"
+
+  => link_to t('btn.new_attendee'), new_attendee_path(event: @event.id), method: :delete, class: "btn btn-primary"
+  =< link_to t('btn.new_seat'), new_seat_path(event: @event.id), method: :delete, class: "btn btn-primary"
