@@ -21,7 +21,7 @@
     = form.text_field :place, disabled: disabled, class: "form-control"
 
   div
-    = form.label :user_id, style: "display: block", class: "form-label"
+    = form.label :user, style: "display: block", class: "form-label"
     = form.collection_select :user_id, User.all, :id, :name, {}, {disabled: disabled, class: "form-control"}
 
   - if disabled == false

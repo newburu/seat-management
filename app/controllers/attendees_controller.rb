@@ -12,7 +12,7 @@ class AttendeesController < ApplicationController
 
   # GET /attendees/new
   def new
-    @attendee = Attendee.new
+    @attendee = Attendee.new(event_id: params[:event])
   end
 
   # GET /attendees/1/edit

@@ -12,7 +12,7 @@ class SeatsController < ApplicationController
 
   # GET /seats/new
   def new
-    @seat = Seat.new
+    @seat = Seat.new(event_id: params[:event])
   end
 
   # GET /seats/1/edit
