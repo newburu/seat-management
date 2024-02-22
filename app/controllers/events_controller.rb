@@ -60,7 +60,7 @@ class EventsController < ApplicationController
   # GET /events/1/seats
   def seats
     @seats = Seat.where(event: @event)
-    render json: {event: @event, seats: @seats.as_json(include: [:attendee])}
+    render json: {event: @event.as_json(include: [:user]), seats: @seats.as_json(include: [:attendee])}
   end
 
   private
