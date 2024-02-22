@@ -1,5 +1,5 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_event, only: %i[ show edit update destroy seats ]
 
   # GET /events or /events.json
   def index
@@ -55,6 +55,12 @@ class EventsController < ApplicationController
       format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  # GET /events/1/seats
+  def seats
+    @seats = Seat.where(event: @event)
+    render json: {event: @event.as_json(include: [:user]), seats: @seats.as_json(include: [:attendee])}
   end
 
   private
