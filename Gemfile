@@ -86,3 +86,6 @@ gem 'rails-i18n'
 group :development do
   gem 'i18n-debug'
 end
+
+# CORSの設定
+gem 'rack-cors'
