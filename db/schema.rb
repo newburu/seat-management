@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2023_11_11_074630) do
+ActiveRecord::Schema[7.1].define(version: 2024_03_03_054558) do
   create_table "attendees", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "event_id", null: false
     t.string "name"
@@ -43,7 +43,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_11_074630) do
   end
 
   create_table "users", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "provider", null: false
+    t.string "uid", null: false
     t.string "name"
+    t.string "email", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
