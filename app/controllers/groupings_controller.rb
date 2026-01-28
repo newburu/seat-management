@@ -6,7 +6,7 @@ class GroupingsController < ApplicationController
     @participants = @event.participants
 
     if @participants.empty?
-      redirect_to event_path(@event), alert: "Cannot run grouping with no participants."
+      redirect_to event_path(@event), alert: "参加者がいないためグルーピングを実行できません。"
       return
     end
 
@@ -18,10 +18,10 @@ class GroupingsController < ApplicationController
 
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to event_path(@event), notice: "Grouping completed." }
+        format.html { redirect_to event_path(@event), notice: "グルーピングが完了しました。" }
       end
     rescue => e
-      redirect_to event_path(@event), alert: "Grouping failed: #{e.message}"
+      redirect_to event_path(@event), alert: "グルーピングに失敗しました: #{e.message}"
     end
   end
 

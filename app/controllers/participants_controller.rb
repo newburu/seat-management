@@ -17,12 +17,12 @@ class ParticipantsController < ApplicationController
     if @participant.save
       respond_to do |format|
         format.turbo_stream
-        format.html { redirect_to event_path(@event), notice: 'Participant created.' }
+        format.html { redirect_to event_path(@event), notice: '参加者を追加しました。' }
       end
     else
       respond_to do |format|
         format.turbo_stream { render turbo_stream: turbo_stream.replace('new_participant', partial: 'participants/form', locals: { event: @event, participant: @participant }) }
-        format.html { redirect_to event_path(@event), alert: 'Failed to create participant.' }
+        format.html { redirect_to event_path(@event), alert: '参加者の追加に失敗しました。' }
       end
     end
   end
@@ -33,7 +33,7 @@ class ParticipantsController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream
-      format.html { redirect_to event_path(@event), notice: 'Participant deleted.' }
+      format.html { redirect_to event_path(@event), notice: '参加者を削除しました。' }
     end
   end
 

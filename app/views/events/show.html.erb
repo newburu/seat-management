@@ -10,7 +10,7 @@
   <div class="mt-8 grid grid-cols-1 gap-6 lg:grid-cols-3">
     <!-- Participant List (Left/Center) -->
     <div class="lg:col-span-2">
-      <h3 class="text-lg font-medium leading-6 text-gray-900">Participants</h3>
+      <h3 class="text-lg font-medium leading-6 text-gray-900">参加者一覧</h3>
       <div class="mt-4 flex flex-col">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
@@ -18,10 +18,10 @@
               <table class="min-w-full divide-y divide-gray-300">
                 <thead class="bg-gray-50">
                   <tr>
-                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">Name</th>
-                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Properties</th>
+                    <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">名前</th>
+                    <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">属性</th>
                     <th scope="col" class="relative py-3.5 pl-3 pr-4 sm:pr-6">
-                      <span class="sr-only">Delete</span>
+                      <span class="sr-only">削除</span>
                     </th>
                   </tr>
                 </thead>
@@ -30,7 +30,7 @@
                   <% if @participants.empty? %>
                     <tr id="no_participants_message">
                       <td colspan="3" class="px-3 py-4 text-sm text-gray-500 text-center">
-                        No participants yet.
+                        参加者がまだいません。
                       </td>
                     </tr>
                   <% end %>
@@ -45,34 +45,34 @@
     <!-- Registration Form (Right column) -->
     <div class="lg:col-span-1 space-y-8">
       <div>
-        <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">Add Participant</h3>
+        <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">参加者を追加</h3>
         <%= turbo_frame_tag "new_participant" do %>
           <%= render "participants/form", event: @event, participant: @event.participants.build %>
         <% end %>
       </div>
 
       <div class="border-t pt-8">
-        <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">AI Grouping</h3>
+        <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">AIグルーピング</h3>
         <p class="text-sm text-gray-500 mb-4">
-          Ask AI to organize participants into groups based on their properties.
+          AIに参加者の属性に基づいた最適なグループ分けを依頼します。
         </p>
         
         <%= button_to event_groupings_path(@event), method: :post, class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500", data: { turbo: true } do %>
-          <span class="processing-hidden">RUN AI GROUPING</span>
-          <span class="processing-shown hidden">Processing...</span>
+          <span class="processing-hidden">AIグルーピングを実行</span>
+          <span class="processing-shown hidden">実行中...</span>
         <% end %>
       </div>
     </div>
   </div>
 
   <div class="mt-12">
-    <h3 class="text-xl font-bold text-gray-900 mb-6">Grouping Results</h3>
+    <h3 class="text-xl font-bold text-gray-900 mb-6">グルーピング結果</h3>
     <%= turbo_frame_tag "grouping_result" do %>
       <% if @event.groupings.exists? %>
         <%= render @event.groupings.last %>
       <% else %>
         <p class="text-gray-500 text-center py-10 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300">
-          No grouping results yet.
+          グルーピング結果はまだありません。
         </p>
       <% end %>
     <% end %>

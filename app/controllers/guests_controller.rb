@@ -12,12 +12,13 @@ class GuestsController < ApplicationController
       sign_in(user)
     end
 
-    # 2. Create Event (Empty)
-    event = current_user.events.create!(name: "Guest Event #{Time.current.strftime('%Y-%m-%d %H:%M')}")
+    # event = current_user.events.create!(name: "Guest Event #{Time.current.strftime('%Y-%m-%d %H:%M')}")
+    # Simplified name for guest
+    event = current_user.events.create!(name: "ゲストイベント #{Time.current.strftime('%m/%d %H:%M')}")
 
-    redirect_to event_path(event), notice: "Event created successfully."
+    redirect_to event_path(event), notice: "イベントを作成しました。"
   rescue StandardError => e
     Rails.logger.error("Guest Error: #{e.message}")
-    redirect_to root_path, alert: "An error occurred: #{e.message}"
+    redirect_to root_path, alert: "エラーが発生しました: #{e.message}"
   end
 end

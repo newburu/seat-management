@@ -109,13 +109,13 @@ module Ai
       {
         "groups" => [
           {
-            "name" => "Group A (Mock)",
-            "reason" => "Mock grouping based on dummy logic",
+            "name" => "グループA (モック)",
+            "reason" => "APIキー未設定時のモックデータです。",
             "members" => @participants.map(&:name).take((@participants.size / 2.0).ceil)
           },
           {
-            "name" => "Group B (Mock)",
-            "reason" => "Mock grouping for remaining members",
+            "name" => "グループB (モック)",
+            "reason" => "残りのメンバーです。",
             "members" => @participants.map(&:name).drop((@participants.size / 2.0).ceil)
           }
         ]
