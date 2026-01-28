@@ -1,2 +1,7 @@
 #!/usr/bin/env ruby
-exec "./bin/rails", "server", *ARGV
+
+if Gem.win_platform?
+  exec "foreman", "start", "-f", "Procfile.dev", "-p", "3000"
+else
+  exec "gem", "exec", "foreman", "start", "-f", "Procfile.dev", "-p", "3000"
+end

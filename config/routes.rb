@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   resources :guests, only: [:create]
   resources :events, only: [:show] do
     resources :participants, only: [:create, :destroy]
+    resources :groupings, only: [:create]
   end
 
   get "up" => "rails/health#show", as: :rails_health_check

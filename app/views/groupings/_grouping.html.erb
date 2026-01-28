@@ -1,0 +1,39 @@
+<div id="<%= dom_id(grouping) %>" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+  <% if grouping.result["groups"].present? %>
+    <% grouping.result["groups"].each_with_index do |group, index| %>
+      <div class="bg-white overflow-hidden shadow rounded-lg border border-gray-200 flex flex-col h-full">
+        <div class="px-4 py-5 sm:px-6 bg-gray-50 border-b border-gray-200">
+          <h3 class="text-lg leading-6 font-medium text-gray-900">
+            <%= group["name"] || "Group #{index + 1}" %>
+          </h3>
+          <p class="mt-1 max-w-2xl text-sm text-gray-500">
+            <%= group["reason"] %>
+          </p>
+        </div>
+        <div class="bg-gray-50 px-4 py-4 sm:p-6 flex-grow">
+          <ul role="list" 
+              class="space-y-3 min-h-[50px]" 
+              data-controller="drag" 
+              data-drag-group-name-value="shared-group">
+            <% (group["members"] || []).each do |member_name| %>
+              <li class="bg-white shadow px-4 py-2 rounded-md border border-gray-100 cursor-move hover:shadow-md transition-shadow">
+                <div class="flex items-center space-x-3">
+                  <div class="flex-shrink-0">
+                    <span class="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center text-indigo-800 font-bold text-xs">
+                      <%= member_name.to_s[0..1].upcase %>
+                    </span>
+                  </div>
+                  <div class="text-sm font-medium text-gray-900">
+                    <%= member_name %>
+                  </div>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+      </div>
+    <% end %>
+  <% else %>
+    <p class="text-red-500">No groups found in result.</p>
+  <% end %>
+</div>
