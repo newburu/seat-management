@@ -1,0 +1,9 @@
+<%= turbo_stream.append "participants_list" do %>
+  <%= render partial: "participants/participant", locals: { participant: @participant } %>
+<% end %>
+
+<%= turbo_stream.replace "new_participant" do %>
+  <%= render partial: "participants/form", locals: { event: @event, participant: @event.participants.build } %>
+<% end %>
+
+<%= turbo_stream.remove "no_participants_message" %>
