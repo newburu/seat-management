@@ -1,0 +1,7 @@
+<%= turbo_frame_tag dom_id(@participant) do %>
+  <tr class="bg-gray-50">
+    <td colspan="3" class="px-4 py-4">
+      <%= render "participants/form", event: @event, participant: @participant %>
+    </td>
+  </tr>
+<% end %>

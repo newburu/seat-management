@@ -46,7 +46,7 @@
     <div class="lg:col-span-1 space-y-8">
       <div>
         <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4">参加者を追加</h3>
-        <%= turbo_frame_tag "new_participant" do %>
+        <%= turbo_frame_tag "new_participant_frame" do %>
           <%= render "participants/form", event: @event, participant: @event.participants.build %>
         <% end %>
       </div>

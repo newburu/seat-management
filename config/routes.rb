@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   root "home#index"
   resources :guests, only: [:create]
   resources :events, only: [:show] do
-    resources :participants, only: [:create, :destroy]
+    resources :participants, only: [:create, :destroy, :edit, :update]
     resources :groupings, only: [:create]
   end
 

@@ -1,0 +1,12 @@
+ja:
+  activerecord:
+    models:
+      participant: 参加者
+      grouping: グルーピング
+      event: イベント
+    attributes:
+      participant:
+        name: 名前
+        properties: 属性
+      event:
+        name: イベント名
