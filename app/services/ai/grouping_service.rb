@@ -1,6 +1,6 @@
 module Ai
   class GroupingService
-    MODELS = %w[gemini-1.5-flash gemini-1.5-pro gemini-1.0-pro]
+    MODELS = %w[gemini-2.0-flash gemini-flash-latest gemini-1.5-flash gemini-1.5-pro gemini-1.0-pro]
 
     def initialize(event)
       @event = event
@@ -29,26 +29,29 @@ module Ai
       end.to_json
 
       <<~PROMPT
-        You are an expert event organizer. Your task is to group the following participants into optimal teams.
+        あなたはプロのイベントオーガナイザーです。以下の参加者を最適なチームにグループ分けしてください。
         
-        Participants Data:
+        参加者データ:
         #{participants_data}
 
-        Instructions:
-        1. Analyze the properties of each participant.
-        2. Create groups that are balanced or thematically consistent (e.g., same hobbies, diverse skills).
-        3. Determine the optimal number of groups and members per group automatically.
-        4. Output MUST be valid JSON only, following this schema:
+        指示:
+        1. 各参加者の属性を分析してください。
+        2. バランスの取れた、あるいはテーマごとの一貫性のあるグループを作成してください（例：同じ趣味、スキルの多様性など）。
+        3. グループの数と各グループの人数は、自動的に最適化してください。
+        4. 出力は必ず以下のスキーマに従った有効なJSONのみとしてください。
+        5. グループ名（name）と理由（reason）は必ず日本語で出力してください。
+
+        JSONスキーマ:
         {
           "groups": [
             {
-              "name": "Group Name",
-              "reason": "Reason for this grouping",
-              "members": ["Name1", "Name2"]
+              "name": "グループ名",
+              "reason": "このグループ分けの理由",
+              "members": ["名前1", "名前2"]
             }
           ]
         }
-        5. Do not include any explanations or markdown formatting (like ```json). Just the raw JSON string.
+        6. 説明やMarkdownのフォーマット（```json など）を含めないでください。生のJSON文字列のみを出力してください。
       PROMPT
     end
 
@@ -70,6 +73,7 @@ module Ai
       client = Gemini.new(
         credentials: {
           service: 'generative-language-api',
+          version: 'v1beta',
           api_key: ENV['GOOGLE_API_KEY']
         },
         options: { model: model, server_sent_events: false }
