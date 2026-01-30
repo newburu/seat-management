@@ -1,7 +1,29 @@
-<%= turbo_frame_tag dom_id(@participant) do %>
-  <tr class="bg-gray-50">
-    <td colspan="3" class="px-4 py-4">
-      <%= render "participants/form", event: @event, participant: @participant %>
-    </td>
-  </tr>
+<%= turbo_frame_tag "modal" do %>
+  <div class="relative z-[100]" aria-labelledby="modal-title" role="dialog" aria-modal="true"
+       data-controller="ui--modal"
+       data-action="keydown.esc@window->ui--modal#handleKeyup">
+
+    <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"
+         data-action="click->ui--modal#closeBackground"></div>
+
+    <div class="fixed inset-0 z-10 overflow-y-auto pointer-events-none">
+      <div class="flex min-h-full items-center justify-center p-4 text-center sm:p-0 pointer-events-auto">
+        <div class="relative transform overflow-hidden rounded-lg bg-white px-4 pt-5 pb-4 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+          <div class="absolute top-0 right-0 pt-4 pr-4 block">
+            <button type="button" class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                    data-action="click->ui--modal#close">
+              <span class="sr-only">Close</span>
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
+          </div>
+          <div class="w-full">
+            <h3 class="text-lg font-medium leading-6 text-gray-900 mb-4" id="modal-title">参加者を編集</h3>
+            <%= render "participants/form", event: @event, participant: @participant %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 <% end %>
