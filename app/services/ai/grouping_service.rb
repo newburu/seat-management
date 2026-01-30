@@ -2,9 +2,10 @@ module Ai
   class GroupingService
     MODELS = %w[gemini-2.0-flash gemini-flash-latest gemini-1.5-flash gemini-1.5-pro gemini-1.0-pro]
 
-    def initialize(event)
+    def initialize(event, seats_per_group: nil)
       @event = event
       @participants = event.participants
+      @seats_per_group = seats_per_group
     end
 
     def call
@@ -28,6 +29,12 @@ module Ai
         { name: p.name }.merge(p.properties || {})
       end.to_json
 
+      group_size_instruction = if @seats_per_group.present?
+                                 "3. 各グループの人数は #{@seats_per_group} 人程度になるようにしてください。"
+                               else
+                                 "3. グループの数と各グループの人数は、自動的に最適化してください。"
+                               end
+
       <<~PROMPT
         あなたはプロのイベントオーガナイザーです。以下の参加者を最適なチームにグループ分けしてください。
         
@@ -37,7 +44,7 @@ module Ai
         指示:
         1. 各参加者の属性を分析してください。
         2. バランスの取れた、あるいはテーマごとの一貫性のあるグループを作成してください（例：同じ趣味、スキルの多様性など）。
-        3. グループの数と各グループの人数は、自動的に最適化してください。
+        #{group_size_instruction}
         4. 出力は必ず以下のスキーマに従った有効なJSONのみとしてください。
         5. グループ名（name）と理由（reason）は必ず日本語で出力してください。
 
