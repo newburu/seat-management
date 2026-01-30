@@ -1,8 +1,10 @@
-<tr id="<%= dom_id(participant) %>" class="group hover:bg-gray-50">
-  <td class="whitespace-nowrap py-4 pl-4 pr-3 text-sm font-medium text-gray-900 sm:pl-6">
+<tr id="<%= dom_id(participant) %>" class="group hover:bg-gray-50 flex flex-col lg:table-row bg-white border-b lg:border-none mb-4 lg:mb-0 shadow lg:shadow-none rounded-lg lg:rounded-none overflow-hidden hover:shadow-md lg:hover:bg-gray-50 transition-shadow lg:transition-colors">
+  <td class="whitespace-nowrap py-3 px-4 lg:py-4 lg:pl-4 lg:pl-6 lg:pr-3 text-sm font-medium text-gray-900 lg:pl-6 block lg:table-cell border-b lg:border-none bg-gray-50 lg:bg-transparent">
+    <span class="lg:hidden text-xs text-gray-500 font-normal mr-2">名前:</span>
     <%= participant.name %>
   </td>
-  <td class="px-3 py-4 text-sm text-gray-500">
+  <td class="px-4 py-3 lg:px-3 lg:py-4 text-sm text-gray-500 block lg:table-cell">
+    <div class="lg:hidden text-xs text-gray-400 mb-1">属性:</div>
     <% if participant.properties.present? %>
       <div class="flex flex-wrap gap-2">
         <% participant.properties.each do |key, value| %>
@@ -11,10 +13,12 @@
           </span>
         <% end %>
       </div>
+    <% else %>
+      <span class="text-gray-400 text-xs lg:hidden">なし</span>
     <% end %>
   </td>
-  <td class="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6 space-x-2">
+  <td class="relative whitespace-nowrap py-3 px-4 lg:py-4 lg:pl-3 lg:pr-4 text-right text-sm font-medium lg:pr-6 space-x-2 block lg:table-cell bg-gray-50 lg:bg-transparent flex justify-end items-center lg:block">
     <%= link_to "編集", edit_event_participant_path(participant.event, participant), class: "text-indigo-600 hover:text-indigo-900", data: { turbo_frame: "modal" } %>
-    <%= button_to "削除", event_participant_path(participant.event, participant), method: :delete, class: "inline-block text-red-600 hover:text-red-900 bg-transparent border-0 cursor-pointer p-0", form: { class: "inline-block", data: { turbo_confirm: "本当に削除しますか？" } } %>
+    <%= button_to "削除", event_participant_path(participant.event, participant), method: :delete, class: "inline-block text-red-600 hover:text-red-900 bg-transparent border-0 cursor-pointer p-0 ml-2", form: { class: "inline-block", data: { turbo_confirm: "本当に削除しますか？" } } %>
   </td>
 </tr>

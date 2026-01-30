@@ -1,4 +1,4 @@
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-10">
   <div class="md:flex md:items-center md:justify-between">
     <div class="min-w-0 flex-1">
       <div class="flex items-center">
@@ -21,9 +21,9 @@
       <div class="mt-4 flex flex-col">
         <div class="-my-2 -mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
           <div class="inline-block min-w-full py-2 align-middle md:px-6 lg:px-8">
-            <div class="overflow-hidden shadow ring-1 ring-black ring-opacity-5 md:rounded-lg">
-              <table class="min-w-full divide-y divide-gray-300">
-                <thead class="bg-gray-50">
+            <div class="overflow-visible lg:overflow-hidden shadow-none lg:shadow ring-0 lg:ring-1 lg:ring-black lg:ring-opacity-5 lg:rounded-lg">
+              <table class="min-w-full divide-y divide-gray-300 lg:table block">
+                <thead class="bg-gray-50 hidden lg:table-header-group">
                   <tr>
                     <th scope="col" class="py-3.5 pl-4 pr-3 text-left text-sm font-semibold text-gray-900 sm:pl-6">名前</th>
                     <th scope="col" class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">属性</th>
@@ -32,11 +32,11 @@
                     </th>
                   </tr>
                 </thead>
-                <tbody id="participants_list" class="divide-y divide-gray-200 bg-white">
+                <tbody id="participants_list" class="divide-y divide-gray-200 bg-white lg:table-row-group block">
                   <%= render partial: "participants/participant", collection: @participants %>
                   <% if @participants.empty? %>
-                    <tr id="no_participants_message">
-                      <td colspan="3" class="px-3 py-4 text-sm text-gray-500 text-center">
+                    <tr id="no_participants_message" class="block lg:table-row">
+                      <td colspan="3" class="px-3 py-4 text-sm text-gray-500 text-center block lg:table-cell">
                         参加者がまだいません。
                       </td>
                     </tr>
