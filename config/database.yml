@@ -16,6 +16,8 @@ default: &default
   username: <%= ENV.fetch("DB_USERNAME", "root") %>
   password: <%= ENV.fetch("DB_PASSWORD", "") %>
   host: <%= ENV.fetch("DB_HOST", "127.0.0.1") %>
+  port: <%= ENV.fetch("DB_PORT", 3306) %>
+  database: <%= ENV.fetch("DB_NAME", "seat_management_#{Rails.env}") %>
 
 development:
   <<: *default
@@ -50,6 +52,3 @@ test:
 #
 production:
   <<: *default
-  database: seat_management_production
-  username: seat_management
-  password: <%= ENV["SEAT_MANAGEMENT_DATABASE_PASSWORD"] %>

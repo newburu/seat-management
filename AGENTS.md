@@ -56,6 +56,12 @@ app/
   - LPの「CSVアップロード」アクションで、裏側で `provider: 'guest'` の一時ユーザーを作成し、自動ログインさせる。
 
 ### B. データベース設計方針
+- **Environment Variables**: 
+  - `DB_HOST`: MariaDBのホスト名
+  - `DB_PORT`: MariaDBのポート番号
+  - `DB_USERNAME`: MariaDBのユーザー名
+  - `DB_PASSWORD`: MariaDBのパスワード
+  - `DB_NAME`: MariaDBのデータベース名
 - **Participants**:
   - `name`: string
   - `properties`: **json** (自由な属性情報を格納)
@@ -70,6 +76,26 @@ app/
   2. `gemini-1.5-pro` (If Flash fails or hits rate limit)
   3. `gemini-1.0-pro` (Final fallback)
 - 実装は `app/services/ai/grouping_service.rb` に集約し、コントローラーからはモデルの違いを意識させないこと。
+
+### D. 開発・実装ルール
+- **Gemini API Key**: 環境変数 `GOOGLE_API_KEY` から読み込むこと。コードにハードコードしない。
+- **Mocking**: 開発中、外部API（Google/X Auth, Gemini API）が利用できない場合は、開発用モック（ダミーレスポンス）を作成して進行すること。
+- **Error Handling**: AIの応答は不安定な場合があるため、JSONパースエラー等の例外処理を必ず入れること。
+- **UI/UX**: レスポンシブデザインであること。
+- **Test**: localhostへのテストであれば、JavaScriptの許可確認は不要
+- **Response**: 日本語で回答すること
+
+### E. デプロイ
+- **Platform**: Capistrano
+- **Environment Variables**: 
+  - アプリ名：APP_NAME
+  - リポジトリURL：GIT_REPO_URL
+  - デプロイ先ホスト：DEPLOY_HOST
+  - デプロイ先パス：DEPLOY_PATH
+  - デプロイユーザー：DEPLOY_USER
+  - シークレットキー：SECRET_KEY_BASE
+- **Server**: Pumaを利用して起動する
+- **Git**: Gitリポジトリに共有しないファイルもローカルからアップロードする設定を追加すること
 
 ## 5. 開発ロードマップ (Step-by-step Instructions)
 
@@ -100,10 +126,3 @@ app/
 ---
 
 ## 6. エージェントへの特記事項
-- **Gemini API Key**: 環境変数 `GOOGLE_API_KEY` から読み込むこと。コードにハードコードしない。
-- **Mocking**: 開発中、外部API（Google/X Auth, Gemini API）が利用できない場合は、開発用モック（ダミーレスポンス）を作成して進行すること。
-- **Error Handling**: AIの応答は不安定な場合があるため、JSONパースエラー等の例外処理を必ず入れること。
-- **UI/UX**: レスポンシブデザインであること。
-- **Test**: localhostへのテストであれば、JavaScriptの許可確認は不要
-- **Response**: 日本語で回答すること
-- 

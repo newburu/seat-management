@@ -9,7 +9,7 @@ gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter2"
 gem "gemini-ai"
-gem "dotenv-rails", groups: [:development, :test]
+gem "dotenv-rails"
 
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
@@ -76,4 +76,16 @@ group :test do
   gem "selenium-webdriver"
 end
 
+group :development do
+  gem "capistrano"
+  gem "capistrano-rails"
+  gem "capistrano-rbenv"
+  gem "capistrano-bundler"
+  gem "capistrano3-puma"
+  gem "ed25519"
+  gem "bcrypt_pbkdf"
+end
+
 gem "rails-i18n", "~> 8.1"
+
+
