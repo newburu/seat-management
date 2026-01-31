@@ -95,6 +95,7 @@ app/
   - デプロイユーザー：DEPLOY_USER
   - シークレットキー：SECRET_KEY_BASE
 - **Server**: Pumaを利用して起動する
+- **Systemd**: Socketsを利用した自動起動を設定すること
 - **Git**: Gitリポジトリに共有しないファイルもローカルからアップロードする設定を追加すること
 
 ## 5. 開発ロードマップ (Step-by-step Instructions)

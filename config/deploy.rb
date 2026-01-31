@@ -42,3 +42,7 @@ set :rbenv_ruby, '4.0.0' # Adjust to actual ruby version if different
 
 # Uncomment the following to require manually verifying the host key before first deploy.
 # set :ssh_options, verify_host_key: :secure
+
+set :puma_systemctl_user, :user
+set :puma_service_unit_name, "seat-management_puma_production"
+set :puma_conf, "#{current_path}/config/puma.rb"

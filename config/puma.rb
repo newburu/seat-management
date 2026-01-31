@@ -41,7 +41,8 @@ plugin :solid_queue if ENV["SOLID_QUEUE_IN_PUMA"]
 pidfile ENV["PIDFILE"] if ENV["PIDFILE"]
 
 # Production specific configuration
-if ENV.fetch("RAILS_ENV", "development") == "production"
+# Check for production environment or presence of deployment directory
+if ENV.fetch("RAILS_ENV", "development") == "production" || File.exist?("/var/www/seat-management")
   app_dir = "/var/www/seat-management"
   shared_dir = "#{app_dir}/shared"
 
