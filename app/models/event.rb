@@ -4,4 +4,6 @@ class Event < ApplicationRecord
   has_many :groupings, dependent: :destroy
 
   validates :name, presence: true, length: { maximum: 50 }
+  
+  serialize :participant_attributes_config, coder: JSON
 end

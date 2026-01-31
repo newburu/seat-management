@@ -103,3 +103,7 @@ app/
 - **Gemini API Key**: 環境変数 `GOOGLE_API_KEY` から読み込むこと。コードにハードコードしない。
 - **Mocking**: 開発中、外部API（Google/X Auth, Gemini API）が利用できない場合は、開発用モック（ダミーレスポンス）を作成して進行すること。
 - **Error Handling**: AIの応答は不安定な場合があるため、JSONパースエラー等の例外処理を必ず入れること。
+- **UI/UX**: レスポンシブデザインであること。
+- **Test**: localhostへのテストであれば、JavaScriptの許可確認は不要
+- **Response**: 日本語で回答すること
+- 

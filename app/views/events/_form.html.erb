@@ -1,4 +1,4 @@
-<%= form_with(model: event, class: "space-y-6") do |f| %>
+<%= form_with(model: event, class: "space-y-4 bg-gray-50 p-4 rounded-md shadow-sm") do |f| %>
   <% if event.errors.any? %>
     <div class="rounded-md bg-red-50 p-4">
       <div class="flex">
@@ -28,8 +28,56 @@
     </div>
   </div>
 
-  <div class="flex items-center justify-end space-x-3 border-t border-gray-100 pt-5">
-    <%= link_to "キャンセル", event, class: "rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50" %>
-    <%= f.submit "保存する", class: "inline-flex justify-center rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600" %>
+  <div class="space-y-2" data-controller="attributes-config">
+    <label class="block text-sm font-medium text-gray-700">参加者属性設定</label>
+    <div class="bg-white p-3 rounded-md border border-gray-200 space-y-3">
+      <div data-attributes-config-target="container" class="space-y-3">
+        <% if event.participant_attributes_config.present? %>
+          <% event.participant_attributes_config.each_with_index do |config, index| %>
+            <div class="attribute-config-item flex items-center space-x-2">
+              <input type="text" name="event[participant_attributes_config][<%= index %>][label]" value="<%= config['label'] %>" placeholder="項目名 (例: 部署)" class="block flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+              <label class="flex items-center space-x-1">
+                <input type="hidden" name="event[participant_attributes_config][<%= index %>][required]" value="0">
+                <input type="checkbox" name="event[participant_attributes_config][<%= index %>][required]" value="1" <%= 'checked' if config['required'].to_s == '1' || config['required'] == true %>>
+                <span class="text-sm text-gray-600">必須</span>
+              </label>
+              <button type="button" data-action="attributes-config#remove" class="text-red-600 hover:text-red-800 text-sm">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      
+      <button type="button" data-action="attributes-config#add" class="mt-2 inline-flex items-center px-3 py-1.5 border border-gray-300 shadow-sm text-xs font-medium rounded text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        設定を追加
+      </button>
+
+      <template data-attributes-config-target="template">
+        <div class="attribute-config-item flex items-center space-x-2 mt-3">
+          <input type="text" name="event[participant_attributes_config][TEMPLATE_INDEX][label]" placeholder="項目名 (例: 部署)" class="block flex-1 rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm">
+          <label class="flex items-center space-x-1">
+            <input type="hidden" name="event[participant_attributes_config][TEMPLATE_INDEX][required]" value="0">
+            <input type="checkbox" name="event[participant_attributes_config][TEMPLATE_INDEX][required]" value="1">
+            <span class="text-sm text-gray-600">必須</span>
+          </label>
+          <button type="button" data-action="attributes-config#remove" class="text-red-600 hover:text-red-800 text-sm">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+              <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd" />
+            </svg>
+          </button>
+        </div>
+      </template>
+    </div>
+  </div>
+
+  <div class="flex items-center space-x-3">
+    <%= f.submit "保存する", class: "flex-1 flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+    <%= link_to "キャンセル", event, class: "flex-1 flex justify-center py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
   </div>
 <% end %>

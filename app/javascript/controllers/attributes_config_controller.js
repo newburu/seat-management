@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["container", "template"]
 
   connect() {
-    // Optional: could initialize something here
+    // Add default row if empty? Maybe not needed.
   }
 
   add(event) {
@@ -15,7 +15,7 @@ export default class extends Controller {
 
   remove(event) {
     event.preventDefault()
-    const item = event.target.closest(".property-field")
+    const item = event.target.closest(".attribute-config-item")
     item.remove()
   }
 }
