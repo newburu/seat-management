@@ -11,7 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema[8.0].define(version: 2026_01_31_013215) do
-  create_table "events", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
+  create_table "events", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
@@ -21,7 +21,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_31_013215) do
     t.check_constraint "json_valid(`participant_attributes_config`)", name: "participant_attributes_config"
   end
 
-  create_table "groupings", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
+  create_table "groupings", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.text "result", size: :long, collation: "utf8mb4_bin"
     t.bigint "event_id", null: false
     t.datetime "created_at", null: false
@@ -30,7 +30,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_31_013215) do
     t.check_constraint "json_valid(`result`)", name: "result"
   end
 
-  create_table "participants", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
+  create_table "participants", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "name"
     t.text "properties", size: :long, collation: "utf8mb4_bin"
     t.bigint "event_id", null: false
@@ -40,7 +40,7 @@ ActiveRecord::Schema[8.0].define(version: 2026_01_31_013215) do
     t.check_constraint "json_valid(`properties`)", name: "properties"
   end
 
-  create_table "users", charset: "utf8mb4", collation: "utf8mb4_uca1400_ai_ci", force: :cascade do |t|
+  create_table "users", charset: "utf8mb4", collation: "utf8mb4_unicode_ci", force: :cascade do |t|
     t.string "email"
     t.string "encrypted_password"
     t.string "reset_password_token"
