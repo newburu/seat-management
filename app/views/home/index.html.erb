@@ -1,16 +1,168 @@
-<div class="min-h-screen bg-gray-50 flex flex-col justify-center items-center px-4 sm:px-6 lg:px-8">
-  <div class="max-w-md w-full space-y-8">
-    <div class="text-center">
-      <h1 class="text-4xl font-extrabold text-gray-900 tracking-tight">
-        Seating AI (自動席替え)
-      </h1>
-      <p class="mt-2 text-base text-gray-500">
-        AIがあなたのイベントの座席配置やチーム分けを自動で提案します。
-      </p>
-    </div>
+<!-- Hero Section -->
+<div class="relative bg-white overflow-hidden">
+  <div class="max-w-7xl mx-auto">
+    <div class="relative z-10 pb-8 bg-white sm:pb-16 md:pb-20 lg:max-w-2xl lg:w-full lg:pb-28 xl:pb-32">
+      <svg class="hidden lg:block absolute right-0 inset-y-0 h-full w-48 text-white transform translate-x-1/2" fill="currentColor" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+        <polygon points="50,0 100,0 50,100 0,100" />
+      </svg>
 
-    <div class="mt-8 bg-white py-8 px-4 shadow sm:rounded-lg sm:px-10">
-      <%= button_to "ゲストとして始める", guests_path, method: :post, class: "w-full flex justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" %>
+      <main class="mt-10 mx-auto max-w-7xl px-4 sm:mt-12 sm:px-6 md:mt-16 lg:mt-20 lg:px-8 xl:mt-28">
+        <div class="sm:text-center lg:text-left">
+          <h1 class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+            <span class="block">AIで、最適な座席を</span>
+            <span class="block text-indigo-600">瞬時にデザイン。</span>
+          </h1>
+          <p class="mt-3 text-base text-gray-500 sm:mt-5 sm:text-lg sm:max-w-xl sm:mx-auto md:mt-5 md:text-xl lg:mx-0">
+            Seating AIは、イベントやワークショップの座席配置を自動で最適化します。「属性の分散」「仲良しグループの維持」「固定席の指定」など、複雑な条件もAIにお任せください。
+          </p>
+          <div class="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
+            <div class="rounded-md shadow">
+              <%= button_to guests_path, method: :post, class: "w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 md:py-4 md:text-lg md:px-10" do %>
+                ゲストとして始める
+              <% end %>
+            </div>
+            <!-- <div class="mt-3 sm:mt-0 sm:ml-3">
+              <a href="#" class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-indigo-700 bg-indigo-100 hover:bg-indigo-200 md:py-4 md:text-lg md:px-10">
+                ログイン
+              </a>
+            </div> -->
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+  <div class="lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 bg-gray-50 flex items-center justify-center">
+    <!-- Abstract decorative background using CSS gradients instead of image/unsplash to ensure reliability -->
+    <div class="w-full h-full bg-gradient-to-br from-indigo-500 to-purple-600 opacity-90 flex items-center justify-center">
+        <div class="text-white text-opacity-20 text-9xl font-bold select-none">AI</div>
     </div>
   </div>
 </div>
+
+<!-- Features Section -->
+<div class="py-12 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="lg:text-center">
+      <h2 class="text-base text-indigo-600 font-semibold tracking-wide uppercase">Features</h2>
+      <p class="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+        席決めの悩みを、すべて解決
+      </p>
+      <p class="mt-4 max-w-2xl text-xl text-gray-500 lg:mx-auto">
+        手作業でのパズルはもう不要。あなたのイベントに合わせて最適な配置を提案します。
+      </p>
+    </div>
+
+    <div class="mt-10">
+      <dl class="space-y-10 md:space-y-0 md:grid md:grid-cols-2 md:gap-x-8 md:gap-y-10">
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/users -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">属性を均等に分散</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            「職種」「性別」「部署」など、参加者の属性がテーブルごとに偏らないよう、AIがバランス良く配置します。
+          </dd>
+        </div>
+
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/star -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">特別対応もお手のもの</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            「この人は必ずS席」「VIP同士は同じテーブル」といった固定条件や特別なルールも柔軟に設定可能です。
+          </dd>
+        </div>
+
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/lightning-bolt -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">瞬時に再計算</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            急な欠席や参加者の変更があっても大丈夫。ボタン一つで瞬時に最適な座席表を再生成します。
+          </dd>
+        </div>
+
+        <div class="relative">
+          <dt>
+            <div class="absolute flex items-center justify-center h-12 w-12 rounded-md bg-indigo-500 text-white">
+              <!-- Heroicon name: outline/check-circle -->
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>
+            </div>
+            <p class="ml-16 text-lg leading-6 font-medium text-gray-900">直感的な操作</p>
+          </dt>
+          <dd class="mt-2 ml-16 text-base text-gray-500">
+            ドラッグ＆ドロップでの手動調整も可能。AIの提案をベースに、最後はあなたの手で微調整できます。
+          </dd>
+        </div>
+      </dl>
+    </div>
+  </div>
+</div>
+
+<!-- Use Cases Section -->
+<div class="bg-gray-100 py-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-extrabold text-gray-900">様々なシーンで活用されています</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <!-- Case 1 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium text-gray-900">企業の懇親会</h3>
+                    <p class="mt-2 text-gray-500 text-sm">部署や年次が偏らないように配置し、社内コミュニケーションを活性化。</p>
+                </div>
+            </div>
+            <!-- Case 2 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium text-gray-900">結婚式の二次会</h3>
+                    <p class="mt-2 text-gray-500 text-sm">新郎新婦の友人をミックスしたり、共通の趣味を持つ人を近くに配置。</p>
+                </div>
+            </div>
+            <!-- Case 3 -->
+            <div class="bg-white overflow-hidden shadow rounded-lg">
+                <div class="px-4 py-5 sm:p-6">
+                    <h3 class="text-lg font-medium text-gray-900">研修・ワークショップ</h3>
+                    <p class="mt-2 text-gray-500 text-sm">経験者と初心者をバランス良くチーム分けし、学習効果を最大化。</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- CTA Section -->
+<div class="bg-indigo-700">
+  <div class="max-w-2xl mx-auto text-center py-16 px-4 sm:py-20 sm:px-6 lg:px-8">
+    <h2 class="text-3xl font-extrabold text-white sm:text-4xl">
+      <span class="block">準備はいいですか？</span>
+      <span class="block">今すぐ、最適な座席を作ろう。</span>
+    </h2>
+    <p class="mt-4 text-lg leading-6 text-indigo-200">
+      アカウント登録なしで、すぐに機能を試すことができます。
+    </p>
+    <%= button_to guests_path, method: :post, class: "mt-8 w-full inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-indigo-600 bg-white hover:bg-indigo-50 sm:w-auto" do %>
+      ゲストとして始める
+    <% end %>
+  </div>
+</div>
+
