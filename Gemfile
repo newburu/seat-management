@@ -11,6 +11,7 @@ gem "omniauth-twitter2"
 gem "gemini-ai"
 gem "dotenv-rails"
 
+gem "meta-tags"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"

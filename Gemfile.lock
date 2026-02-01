@@ -198,6 +198,8 @@ GEM
       net-smtp
     marcel (1.1.0)
     matrix (0.4.3)
+    meta-tags (2.22.3)
+      actionpack (>= 6.0.0)
     mini_mime (1.1.5)
     minitest (6.0.1)
       prism (~> 1.5)
@@ -412,6 +414,7 @@ DEPENDENCIES
   gemini-ai
   importmap-rails
   jbuilder
+  meta-tags
   mysql2 (~> 0.5)
   omniauth
   omniauth-google-oauth2

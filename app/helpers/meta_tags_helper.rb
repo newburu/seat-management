@@ -11,7 +11,7 @@ module MetaTagsHelper
       noindex: !Rails.env.production?,
       icon: [
         { href: image_url('favicon.png') },
-        { href: image_url('musubi_favicon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
+        { href: image_url('favicon.png'), rel: 'apple-touch-icon', sizes: '180x180', type: 'image/png' },
       ],
       og: {
         site_name: 'Musubi',
