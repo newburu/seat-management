@@ -14,6 +14,8 @@ class GroupingsController < ApplicationController
       # GroupingService should return JSON object { "groups": [...] }
       # GroupingService should return JSON object { "groups": [...] }
       seats_per_group = params[:seats_per_group].presence&.to_i
+
+
       result = Ai::GroupingService.new(@event, seats_per_group: seats_per_group).call
       
       @grouping = @event.groupings.create!(result: result)

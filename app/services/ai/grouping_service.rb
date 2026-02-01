@@ -30,7 +30,7 @@ module Ai
       end.to_json
 
       group_size_instruction = if @seats_per_group.present?
-                                 "3. 各グループの人数は #{@seats_per_group} 人程度になるようにしてください。"
+                                 "3. 各グループの人数は **最大 #{@seats_per_group} 人** とし、絶対にこれを超えないようにしてください。"
                                else
                                  "3. グループの数と各グループの人数は、自動的に最適化してください。"
                                end

@@ -28,6 +28,13 @@
     </div>
   </div>
 
+  <div>
+    <%= f.label :group_size, "1グループあたりの最大人数", class: "block text-sm font-medium text-gray-700" %>
+    <div class="mt-1">
+      <%= f.number_field :group_size, class: "block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm", placeholder: "例: 4", min: 1 %>
+    </div>
+  </div>
+
   <div class="space-y-2" data-controller="attributes-config">
     <label class="block text-sm font-medium text-gray-700">参加者属性設定</label>
     <div class="bg-white p-3 rounded-md border border-gray-200 space-y-3">

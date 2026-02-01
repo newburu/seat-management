@@ -21,7 +21,7 @@ class EventsController < ApplicationController
   private
 
   def event_params
-    permitted = params.require(:event).permit(:name)
+    permitted = params.require(:event).permit(:name, :group_size)
     
     if params[:event][:participant_attributes_config].present?
       # Convert hash with indices to array of permitted params
