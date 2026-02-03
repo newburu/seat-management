@@ -4,6 +4,6 @@
   --font-sans: "Inter var", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
 }
 
-@source "../../../app/views/**/*";
-@source "../../../app/helpers/**/*";
-@source "../../../app/javascript/**/*";
+@source "../../views/**/*";
+@source "../../helpers/**/*";
+@source "../../javascript/**/*";
