@@ -1,0 +1,37 @@
+<div class="max-w-4xl mx-auto py-8">
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-3xl font-bold text-gray-800">イベント管理</h1>
+    <%= link_to "新しいイベントを作成", new_event_path, class: "bg-indigo-600 text-white px-6 py-2 rounded-lg hover:bg-indigo-700 transition" %>
+  </div>
+
+  <% if @events.any? %>
+    <div class="grid gap-6">
+      <% @events.each do |event| %>
+        <div class="bg-white rounded-lg shadow p-6 hover:shadow-md transition">
+          <div class="flex justify-between items-start">
+            <div>
+              <h2 class="text-xl font-semibold mb-2">
+                <%= link_to event.name, event_path(event), class: "text-indigo-600 hover:text-indigo-800" %>
+              </h2>
+              <p class="text-gray-500 text-sm">
+                作成日: <%= l event.created_at, format: :long %>
+              </p>
+              <div class="mt-2 text-sm text-gray-600">
+                <span class="mr-4">参加者: <%= event.participants.count %>人</span>
+              </div>
+            </div>
+            <div class="flex space-x-2">
+              <%= link_to "編集", edit_event_path(event), class: "text-gray-500 hover:text-indigo-600 px-3 py-1 border rounded hover:bg-gray-50" %>
+              <%= link_to "削除", event_path(event), data: { turbo_method: :delete, turbo_confirm: "本当に削除しますか？" }, class: "text-red-500 hover:text-red-700 px-3 py-1 border border-red-200 rounded hover:bg-red-50" %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <div class="text-center py-12 bg-white rounded-lg shadow">
+      <p class="text-gray-500 mb-4">まだイベントがありません。</p>
+      <%= link_to "最初のイベントを作成する", new_event_path, class: "text-indigo-600 hover:underline" %>
+    </div>
+  <% end %>
+</div>

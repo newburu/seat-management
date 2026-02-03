@@ -8,6 +8,7 @@ gem "devise"
 gem "omniauth"
 gem "omniauth-google-oauth2"
 gem "omniauth-twitter2"
+gem "omniauth-rails_csrf_protection"
 gem "gemini-ai"
 gem "dotenv-rails"
 
