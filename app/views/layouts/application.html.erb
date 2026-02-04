@@ -31,27 +31,60 @@
 
   <body class="bg-stone-50">
     <header class="bg-white shadow">
-      <div class="container mx-auto px-5 py-4 flex justify-between items-center">
-        <%= link_to root_path, class: "font-bold text-xl" do %>
-          Musubi
-        <% end %>
+      <div class="container mx-auto px-5 py-4" data-controller="menu">
+        <div class="flex justify-between items-center">
+          <%= link_to root_path, class: "font-bold text-xl" do %>
+            Musubi
+          <% end %>
 
-        <div>
-           <% if user_signed_in? && !current_user.guest? %>
-             <%= link_to "イベント一覧", events_path, class: "mr-4 text-indigo-600 hover:text-indigo-800 font-medium" %>
-             <span class="mr-4 text-gray-600">こんにちは、<%= current_user.name || current_user.email %>さん</span>
-             <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-500 hover:text-gray-800" %>
-           <% else %>
-<div class="flex items-center gap-2">
-               <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 font-medium" %>
-               <%= button_to "Xでログイン", user_twitter2_omniauth_authorize_path, data: { turbo: false }, class: "bg-black text-white px-4 py-2 rounded hover:bg-gray-800 font-medium" %>
-             </div>
-             <% if user_signed_in? && current_user.guest? %>
-               <div class="mt-2 text-sm text-right text-gray-400">
-                 ゲストとして閲覧中 | <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "underline hover:text-gray-600" %>
+          <!-- Desktop Menu -->
+          <div class="hidden md:flex items-center gap-4">
+             <% if user_signed_in? && !current_user.guest? %>
+               <%= link_to "イベント一覧", events_path, class: "text-indigo-600 hover:text-indigo-800 font-medium" %>
+               <span class="text-gray-600">こんにちは、<%= current_user.name || current_user.email %>さん</span>
+               <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "text-gray-500 hover:text-gray-800" %>
+             <% else %>
+               <div class="flex items-center gap-2">
+                 <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 font-medium" %>
+                 <%= button_to "Xでログイン", user_twitter2_omniauth_authorize_path, data: { turbo: false }, class: "bg-black text-white px-4 py-2 rounded hover:bg-gray-800 font-medium" %>
                </div>
+               <% if user_signed_in? && current_user.guest? %>
+                 <div class="ml-4 text-sm text-gray-400">
+                   ゲストとして閲覧中 | <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "underline hover:text-gray-600" %>
+                 </div>
+               <% end %>
              <% end %>
-           <% end %>
+          </div>
+
+          <!-- Mobile Hamburger Button -->
+          <button data-action="click->menu#toggle" class="md:hidden text-gray-500 hover:text-gray-700 focus:outline-none">
+            <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+
+        <!-- Mobile Menu Dropdown -->
+        <div data-menu-target="mobileMenu" class="hidden md:hidden mt-4 pb-4 border-t border-gray-100">
+          <% if user_signed_in? && !current_user.guest? %>
+            <div class="flex flex-col space-y-3 pt-4">
+              <span class="text-gray-600 block px-2">こんにちは、<%= current_user.name || current_user.email %>さん</span>
+              <%= link_to "イベント一覧", events_path, class: "block px-2 py-1 text-indigo-600 hover:bg-gray-50 font-medium rounded" %>
+              <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "block px-2 py-1 text-gray-500 hover:bg-gray-50 rounded" %>
+            </div>
+          <% else %>
+            <div class="flex flex-col space-y-3 pt-4">
+               <div class="flex flex-col gap-2">
+                 <%= button_to "Googleでログイン", user_google_oauth2_omniauth_authorize_path, data: { turbo: false }, class: "w-full bg-blue-600 text-white px-4 py-2 rounded hover:bg-blue-700 font-medium text-center" %>
+                 <%= button_to "Xでログイン", user_twitter2_omniauth_authorize_path, data: { turbo: false }, class: "w-full bg-black text-white px-4 py-2 rounded hover:bg-gray-800 font-medium text-center" %>
+               </div>
+               <% if user_signed_in? && current_user.guest? %>
+                 <div class="text-sm text-center text-gray-400 pt-2">
+                   ゲストとして閲覧中 | <%= link_to "ログアウト", destroy_user_session_path, data: { turbo_method: :delete }, class: "underline hover:text-gray-600" %>
+                 </div>
+               <% end %>
+            </div>
+          <% end %>
         </div>
       </div>
     </header>

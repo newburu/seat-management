@@ -13,6 +13,9 @@ application.register("drag", DragController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import MenuController from "./menu_controller"
+application.register("menu", MenuController)
+
 import PropertiesController from "./properties_controller"
 application.register("properties", PropertiesController)
 
