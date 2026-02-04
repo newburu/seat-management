@@ -46,3 +46,35 @@ set :rbenv_ruby, '4.0.0' # Adjust to actual ruby version if different
 set :puma_systemctl_user, :user
 set :puma_service_unit_name, "seat-management_puma_production"
 set :puma_conf, "#{current_path}/config/puma.rb"
+
+namespace :deploy do
+  desc 'Restart application'
+  task :restart do
+    on roles(:app), in: :sequence, wait: 5 do
+      invoke! 'puma:restart'
+    end
+  end
+
+  after :publishing, :restart
+end
+
+# Force clean assets before precompilation to ensure fresh Tailwind build
+namespace :deploy do
+  namespace :assets do
+    desc 'Clobber assets'
+    task :clobber do
+      on roles(:web) do
+        within release_path do
+          with rails_env: fetch(:rails_env) do
+            # Use fetch(:rake) to leverage Capistrano's Rake mapping, or fallback to 'rake'
+            # However, since we are inside `within`, we should likely use the bundle prefix if configured, 
+            # but standard capistrano-rails usage is often just `execute :rake ...` which maps to `bundle exec rake`
+            execute :rake, 'assets:clobber'
+          end
+        end
+      end
+    end
+  end
+end
+
+before 'deploy:assets:precompile', 'deploy:assets:clobber'

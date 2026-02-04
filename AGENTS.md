@@ -84,6 +84,7 @@ app/
 - **UI/UX**: レスポンシブデザインであること。
 - **Test**: localhostへのテストであれば、JavaScriptの許可確認は不要
 - **Response**: 日本語で回答すること
+- **Git**: Gitへのコミット、プッシュ、プルリクエストの作成は行わないこと
 
 ### E. デプロイ
 - **Platform**: Capistrano
