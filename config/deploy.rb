@@ -47,16 +47,7 @@ set :puma_systemctl_user, :user
 set :puma_service_unit_name, "seat-management_puma_production"
 set :puma_conf, "#{current_path}/config/puma.rb"
 
-namespace :deploy do
-  desc 'Restart application'
-  task :restart do
-    on roles(:app), in: :sequence, wait: 5 do
-      invoke! 'puma:restart'
-    end
-  end
 
-  after :publishing, :restart
-end
 
 # Force clean assets before precompilation to ensure fresh Tailwind build
 namespace :deploy do
