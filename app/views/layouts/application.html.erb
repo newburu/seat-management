@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Musubi</title>
+    <title><%= t('app_name') %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= display_meta_tags(default_meta_tags) %>
     <%= csrf_meta_tags %>
@@ -33,8 +33,9 @@
     <header class="bg-white shadow">
       <div class="container mx-auto px-5 py-4" data-controller="menu">
         <div class="flex justify-between items-center">
-          <%= link_to root_path, class: "font-bold text-xl" do %>
-            Musubi
+          <%= link_to root_path, class: "font-bold text-xl flex items-center gap-2" do %>
+            <%= image_tag "favicon.png", class: "h-8 w-8" %>
+            <%= t('app_name') %>
           <% end %>
 
           <!-- Desktop Menu -->
