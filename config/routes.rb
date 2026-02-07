@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resources :groupings, only: [:create]
   end
 
+  get "terms", to: "pages#terms"
+  get "privacy", to: "pages#privacy"
+
   get "up" => "rails/health#show", as: :rails_health_check
 
   # Defines the root path route ("/")
